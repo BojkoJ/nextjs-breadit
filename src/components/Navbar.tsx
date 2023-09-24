@@ -1,3 +1,4 @@
+
 import React from 'react'
 import Link from 'next/link'
 import { Icons } from './Icons'
@@ -22,8 +23,7 @@ const Navbar = async () => {
 
 
             {session?.user ? (
-              //<UserAccountNav /> 
-              <p>gg</p>
+              <UserAccountNav user={session.user}/> 
             ) : (
               <Link href="/sign-in" className={buttonVariants({variant:"default"})}>Sign In</Link>
             )}
