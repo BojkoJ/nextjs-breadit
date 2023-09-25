@@ -25,7 +25,7 @@ const Navbar = async () => {
             {session?.user ? (
               <UserAccountNav user={session.user}/> 
             ) : (
-              <Link href="/sign-in" className={buttonVariants({variant:"default"})}>Sign In</Link>
+              <Link href="/sign-in" className={buttonVariants({className: 'hover:bg-zinc-500'})}>Sign In</Link>
             )}
 
         </div>
