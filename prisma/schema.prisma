@@ -24,7 +24,6 @@ model Account {
   scope             String?
   id_token          String? @db.Text
   session_state     String?
-
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([provider, providerAccountId])
@@ -61,7 +60,6 @@ model Subreddit {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   posts     Post[]
-
   creatorId   String?
   Creator     User?          @relation("CreatedBy", fields: [creatorId], references: [id])
   subscribers Subscription[]
@@ -86,10 +84,8 @@ model Post {
   updatedAt   DateTime   @updatedAt
   subreddit   Subreddit? @relation(fields: [subredditId], references: [id])
   subredditId String
-
   author   User   @relation(fields: [authorId], references: [id])
   authorId String
-
   comments Comment[]
   votes     Vote[]
 }
@@ -102,11 +98,9 @@ model Comment {
   authorId  String
   post      Post     @relation(fields: [postId], references: [id])
   postId    String
-
   replyToId String?
   replyTo   Comment?  @relation("ReplyTo", fields: [replyToId], references: [id], onDelete: NoAction, onUpdate: NoAction)
   replies   Comment[] @relation("ReplyTo")
-
   votes     CommentVote[]
   commentId String?
 }
