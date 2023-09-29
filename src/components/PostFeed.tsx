@@ -21,7 +21,6 @@ const PostFeed: FC<PostFeedProps> = ({ initialPosts, subredditName }) => {
     root: lastPostRef.current,
     threshold: 1,
   })
-
   const { data: session } = useSession()
 
   const { data, fetchNextPage, isFetchingNextPage } = useInfiniteQuery(
@@ -60,28 +59,37 @@ const PostFeed: FC<PostFeedProps> = ({ initialPosts, subredditName }) => {
           return acc
         }, 0)
 
-        const currentVote = post.votes.find((vote) => vote.userId === session?.user.id)
-      
-        if(index === posts.length - 1) {
-          return(
+        const currentVote = post.votes.find(
+          (vote) => vote.userId === session?.user.id
+        )
+
+        if (index === posts.length - 1) {
+          // Add a ref to the last post in the list
+          return (
             <li key={post.id} ref={ref}>
-              <Post 
-                commentAmt={post.comments.length} 
-                post={post} 
-                subredditName={post.subreddit.name}/>
+              <Post
+                currentVote={currentVote}
+                votesAmt={votesAmt}
+                post={post}
+                commentAmt={post.comments.length}
+                subredditName={post.subreddit.name}
+              />
             </li>
           )
         } else {
-          return(
-            <li>
-              <Post 
-                commentAmt={post.comments.length} 
-                post={post} 
-                subredditName={post.subreddit.name}/>
-            </li>
+          return (
+            <Post
+              currentVote={currentVote}
+              votesAmt={votesAmt}
+              key={post.id}
+              post={post}
+              commentAmt={post.comments.length}
+              subredditName={post.subreddit.name}
+            />
           )
         }
       })}
+
     </ul>
   )
 }
