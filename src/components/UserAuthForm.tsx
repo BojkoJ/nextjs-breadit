@@ -37,7 +37,7 @@ const UserAuthForm: FC<UserAuthFormProps> = ({className, ...props}) => {
             onClick={loginWithGoogle} 
             isLoading={isLoading} 
             size='sm' 
-            className='hover:bg-zinc-400 w-full'>
+            className='hover:bg-zinc-500 w-full'>
             {isLoading ? null : <Icons.google className='h-4 w-4 mr-2'/>}
         
             Google
