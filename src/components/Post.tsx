@@ -8,24 +8,32 @@ import PostVoteClient from './post-vote/PostVoteClient'
 type PartialVote = Pick<Vote, 'type'>
 
 interface PostProps {
-    subredditName: string
     post: Post & {
-        author: User,
+        author: User
         votes: Vote[]
-    }
-    commentAmt: number
-    votesAmt: number
-    currentVote?: PartialVote
+      }
+      votesAmt: number
+      subredditName: string
+      currentVote?: PartialVote
+      commentAmt: number
 }
 
-const Post: FC<PostProps> = ({ subredditName, post, commentAmt, votesAmt, currentVote }) => {
+const Post: FC<PostProps> = ({   post,
+    votesAmt: _votesAmt,
+    currentVote: _currentVote,
+    subredditName,
+    commentAmt, }) => {
 
     const pRef = useRef<HTMLParagraphElement>(null)
 
     return <div className='rounded-md bg-white shadow'>
         <div className="px-6 py-4 flex justify-between">
             
-            <PostVoteClient postId={post.id} initialVote={currentVote?.type} initialVotesAmt={votesAmt}/>
+            <PostVoteClient
+                postId={post.id}
+                initialVotesAmt={_votesAmt}
+                initialVote={_currentVote?.type}
+            />
 
             <div className="w-0 flex-1 ">
                 <div className="max-h-40 mt-1 text-sx text-gray-500">
@@ -39,7 +47,7 @@ const Post: FC<PostProps> = ({ subredditName, post, commentAmt, votesAmt, curren
                             <span className='px-1'>•</span>
                         </>
                     ) : null}
-                    <span>Posted by u/{post.author.name}</span>{' '}
+                    <span>Posted by u/{post.author.username}</span>{' '}
                     {formatTimeToNow(new Date(post.createdAt))}
                 </div>
 
