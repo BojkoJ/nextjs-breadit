@@ -13,4 +13,5 @@ Reddit clone "Breadit" in Next.js - Learned by yt: [Josh tried coding](https://w
   <li><a href="https://ui.shadcn.com">ShadCN UI</a> components</li>
   <li>Redis on <a href="https://upstash.com">Upstash</a></li>
   <li><a href="https://zod.dev">Zod</a> data validator</li>
+  <li><a href="https://uploadthing.com">Uploadthing</a> for uploading images</li>
 </ul>
