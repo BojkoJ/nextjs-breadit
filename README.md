@@ -7,6 +7,7 @@ Reddit clone "Breadit" in Next.js - Learned by yt: [Josh tried coding](https://w
   <li><a href="https://next-auth.js.org">Next-auth</a></li>
   <li><a href="https://www.prisma.io">Prisma</a></li>
   <li><a href="https://tailwindcss.com">Tailwindcss</a></li>
+  <li><a href="https://lucide.dev/guide/packages/lucide-react">Lucide React</a></li>
   <li><a href="https://www.typescriptlang.org">Typescript</a></li>
   <li>MySQL hosted on <a href="https://planetscale.com">PlanetScale</a></li>
   <li><a href="https://ui.shadcn.com">ShadCN UI</a> components</li>
